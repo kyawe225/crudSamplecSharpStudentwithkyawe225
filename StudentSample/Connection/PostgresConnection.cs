@@ -4,10 +4,20 @@ namespace StudentSample.Connection
 {
     public class PostgresConnection : IConnection
     {
-        private NpgsqlConnection connection;
+        private NpgsqlConnection? connection;
+        private NpgsqlConnectionStringBuilder builder;
+        public PostgresConnection() {
+            builder = new NpgsqlConnectionStringBuilder() {
+                Host="localhost",
+                Port=5432,
+                Database="aspstudentcrud",
+                Username="postgres",
+                Password="kyaw"
+            };
+        }
         public void Open()
         {
-            connection = new NpgsqlConnection("Host=localhost;port=5432;Database=aspstudentcrud;user id=postgres;password=kyaw");
+            connection = new NpgsqlConnection(builder.ToString());
             connection.Open();
         }
         public NpgsqlCommand CreateCommand(String query)
@@ -16,9 +26,9 @@ namespace StudentSample.Connection
         }
         public void Close()
         {
-            if (connection.State != System.Data.ConnectionState.Closed)
+            if (connection?.State != System.Data.ConnectionState.Closed)
             {
-                connection.Close();
+                connection?.Close();
             }
         }
     }
