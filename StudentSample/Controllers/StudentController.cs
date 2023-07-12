@@ -1,6 +1,4 @@
-﻿using System;
-using NpgsqlTypes;
-using StudentSample.DAO;
+﻿using StudentSample.DAO;
 using StudentSample.Models;
 
 namespace StudentSample.Controllers
