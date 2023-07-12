@@ -70,7 +70,7 @@ namespace StudentSample.Controllers
             Console.WriteLine($"No \t Name \t Score");
             foreach (Student s in models)
             {
-                Console.WriteLine($"${s.no} \t ${s.name} \t ${s.score}");
+                Console.WriteLine($"{s.no} \t {s.name} \t {s.score}");
             }
 		}
         public void menu()
@@ -78,27 +78,35 @@ namespace StudentSample.Controllers
             int temp = -1;
             while (temp != 0)
             {
-                Console.WriteLine("1 : List");
-                Console.WriteLine("2 : Insert");
-                Console.WriteLine("3 : Update");
-                Console.WriteLine("4 : Delete");
-                Console.WriteLine("0 : Quit");
-                temp = Convert.ToInt16(Console.ReadLine());
-                switch (temp)
+                try
                 {
-                    case 1:
-                        this.list();
-                        break;
-                    case 2:
-                        this.insert();
-                        break;
-                    case 3:
-                        this.update();
-                        break;
-                    case 4:
-                        this.delete();
-                        break;
+                    Console.WriteLine("1 : List");
+                    Console.WriteLine("2 : Insert");
+                    Console.WriteLine("3 : Update");
+                    Console.WriteLine("4 : Delete");
+                    Console.WriteLine("0 : Quit");
+                    temp = Convert.ToInt16(Console.ReadLine());
+                    switch (temp)
+                    {
+                        case 1:
+                            this.list();
+                            break;
+                        case 2:
+                            this.insert();
+                            break;
+                        case 3:
+                            this.update();
+                            break;
+                        case 4:
+                            this.delete();
+                            break;
+                    }
+                }catch(Exception e)
+                {
+                    Console.WriteLine("Please Write a integer");
+                    continue;
                 }
+                
             }
         }
     }
