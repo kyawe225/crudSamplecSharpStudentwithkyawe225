@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 
 
 ConfigurationBuilder builder = new ConfigurationBuilder();
-builder.SetBasePath(Environment.CurrentDirectory);
+builder.SetBasePath(AppContext.BaseDirectory);
 builder.AddJsonFile("appsettings.json");
 builder.AddEnvironmentVariables();
 

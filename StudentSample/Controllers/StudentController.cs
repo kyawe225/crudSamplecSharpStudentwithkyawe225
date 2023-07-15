@@ -76,7 +76,7 @@ namespace StudentSample.Controllers
         {
 
             StudentExportExcel excel = new StudentExportExcel(student);
-            excel.GenerateExcel("./student"+DateTime.Now.ToString("yyyymmddhis.fffff")+".xlsx");
+            excel.GenerateExcel(AppContext.BaseDirectory+"/student"+DateTime.Now.ToString("yyyymmddhis.fffff")+".xlsx");
             Console.WriteLine("Excel Generated !");
         }
         public void menu()
