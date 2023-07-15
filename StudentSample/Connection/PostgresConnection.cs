@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Extensions.Configuration;
 using Npgsql;
 namespace StudentSample.Connection
 {
@@ -6,13 +7,22 @@ namespace StudentSample.Connection
     {
         private NpgsqlConnection? connection;
         private NpgsqlConnectionStringBuilder builder;
-        public PostgresConnection() {
-            builder = new NpgsqlConnectionStringBuilder() {
-                Host="localhost",
-                Port=5432,
-                Database="aspstudentcrud",
-                Username="postgres",
-                Password="kyaw"
+        public PostgresConnection(IConfiguration config) {
+            //builder = new NpgsqlConnectionStringBuilder() {
+            //    Host="localhost",
+            //    Port=5432,
+            //    Database="aspstudentcrud",
+            //    Username="postgres",
+            //    Password="kyaw"
+            //};
+            //DatabaseObject c=config.GetSection("DatabaseSetting:Host").Get<DatabaseObject>();
+            builder = new NpgsqlConnectionStringBuilder()
+            {
+                Host = config.GetSection("DatabaseSetting:Host").Get<string>(),
+                Port = config.GetSection("DatabaseSetting:Port").Get<int>(),
+                Database = config.GetSection("DatabaseSetting:Database").Get<string>(),
+                Username = config.GetSection("DatabaseSetting:Username").Get<string>(),
+                Password = config.GetSection("DatabaseSetting:Password").Get<string>()
             };
         }
         public void Open()

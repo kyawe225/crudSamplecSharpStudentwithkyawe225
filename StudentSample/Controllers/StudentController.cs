@@ -1,4 +1,5 @@
 ﻿using StudentSample.DAO;
+using StudentSample.Export;
 using StudentSample.Models;
 
 namespace StudentSample.Controllers
@@ -71,6 +72,13 @@ namespace StudentSample.Controllers
                 Console.WriteLine($"{s.no} \t {s.name} \t {s.score}");
             }
 		}
+        public void exportExcel()
+        {
+
+            StudentExportExcel excel = new StudentExportExcel(student);
+            excel.GenerateExcel("./student"+DateTime.Now.ToString("yyyymmddhis.fffff")+".xlsx");
+            Console.WriteLine("Excel Generated !");
+        }
         public void menu()
         {
             int temp = -1;
@@ -82,6 +90,7 @@ namespace StudentSample.Controllers
                     Console.WriteLine("2 : Insert");
                     Console.WriteLine("3 : Update");
                     Console.WriteLine("4 : Delete");
+                    Console.WriteLine("5 : Export");
                     Console.WriteLine("0 : Quit");
                     temp = Convert.ToInt16(Console.ReadLine());
                     switch (temp)
@@ -97,6 +106,9 @@ namespace StudentSample.Controllers
                             break;
                         case 4:
                             this.delete();
+                            break;
+                        case 5:
+                            this.exportExcel();
                             break;
                     }
                 }catch(Exception e)
