@@ -113,6 +113,7 @@ namespace StudentSample.Controllers
                     }
                 }catch(Exception e)
                 {
+                    Console.WriteLine(e.StackTrace?.ToString());
                     Console.WriteLine("Please Write a integer");
                     continue;
                 }
