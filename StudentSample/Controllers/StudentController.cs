@@ -96,19 +96,19 @@ namespace StudentSample.Controllers
                     switch (temp)
                     {
                         case 1:
-                            this.list();
+                            list();
                             break;
                         case 2:
-                            this.insert();
+                            insert();
                             break;
                         case 3:
-                            this.update();
+                            update();
                             break;
                         case 4:
-                            this.delete();
+                            delete();
                             break;
                         case 5:
-                            this.exportExcel();
+                            exportExcel();
                             break;
                     }
                 }catch(Exception e)
