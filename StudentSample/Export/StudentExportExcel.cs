@@ -26,20 +26,23 @@ namespace StudentSample.Export
                 WorksheetPart worksheetPart = workbookPart.AddNewPart<WorksheetPart>();
                 worksheetPart.Worksheet = new DocumentFormat.OpenXml.Spreadsheet.Worksheet(new SheetData());
 
-                Sheets sheets = spreadsheetDocument.WorkbookPart.Workbook.AppendChild(new Sheets());
+                Sheets? sheets = spreadsheetDocument.WorkbookPart?.Workbook.AppendChild(new Sheets());
 
                 // Create a sheet and give it a name
-                Sheet sheet = new Sheet() { Id = spreadsheetDocument.WorkbookPart.GetIdOfPart(worksheetPart), SheetId = 1, Name = "Boro" };
-                sheets.Append(sheet);
+                Sheet sheet = new Sheet() { Id = spreadsheetDocument.WorkbookPart?.GetIdOfPart(worksheetPart), SheetId = 1, Name = "Boro" };
+                sheets?.Append(sheet);
 
                 // Get the sheet data
-                SheetData sheetData = worksheetPart.Worksheet.GetFirstChild<SheetData>();
+                SheetData? sheetData = worksheetPart.Worksheet.GetFirstChild<SheetData>();
 
                 // Create header row
                 Row headerRow = new Row() { RowIndex = 1 };
                 headerRow.Append(CreateCell("Roll No", 1, 1));
                 headerRow.Append(CreateCell("Name", 2, 1));
                 headerRow.Append(CreateCell("Score", 3, 1));
+                if(sheetData == null){
+                    throw new Exception();
+                }
                 sheetData.Append(headerRow);
                 IEnumerable<Student> students = this.sdao.getAll();
                 //// Create data rows
