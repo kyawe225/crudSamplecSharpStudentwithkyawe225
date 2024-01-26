@@ -8,12 +8,16 @@ namespace StudentSample.Export
 {
     public class StudentExportExcel
     {
-        private StudentDAO sdao;
+        private readonly StudentDAO sdao;
+        #region #constructor
         public StudentExportExcel(StudentDAO dao)
         {
             //set dao
             sdao = dao;
         }
+        #endregion
+
+        #region #GenerateExcel
         public void GenerateExcel(string filepath)
         {
             // Create a new Excel document
@@ -87,6 +91,6 @@ namespace StudentSample.Export
 
             return columnName;
         }
+        #endregion
     }
-
 }

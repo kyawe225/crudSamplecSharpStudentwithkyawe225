@@ -19,7 +19,7 @@ namespace StudentSample.DAO
             string sql = "select * from students;";
             NpgsqlCommand command = con.CreateCommand(sql);
             NpgsqlDataReader reader = command.ExecuteReader();
-            IList<Student> students = new List<Student>();
+            ICollection<Student> students = new List<Student>();
             if (reader.HasRows)
             {
                 while (reader.Read())

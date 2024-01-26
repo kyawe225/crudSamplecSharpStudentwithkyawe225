@@ -1,6 +1,4 @@
-﻿using System;
-namespace StudentSample.Models
-{
+﻿namespace StudentSample.Models;
 	public class Student
 	{
 		public int no { set; get; }
@@ -10,5 +8,4 @@ namespace StudentSample.Models
 		{
 		}
 	}
-}
 
